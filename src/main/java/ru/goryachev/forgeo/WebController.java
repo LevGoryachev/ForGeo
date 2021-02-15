@@ -6,9 +6,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 
 public class WebController {
-    @GetMapping("/one")                 //adress in browser
-    public String welcome () {            //just method name
-        return "pageone";                   //name of page jsp (or html, etc)
+
+    @GetMapping("/main")
+    public String mainPage () {
+        return "main_page";
+    }
+
+    @GetMapping("/one")
+    public String welcome () {
+        return "pageone";
     }
 
     @GetMapping("/two")
