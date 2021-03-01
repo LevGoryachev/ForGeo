@@ -6,7 +6,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "locations")
-public class Location {
+public class Location extends BaseEntity {
 
     @Column (name = "longitude")
     private Double lng;
