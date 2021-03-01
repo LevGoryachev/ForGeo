@@ -1,6 +1,6 @@
 package ru.goryachev.forgeo.services;
 
-import ru.goryachev.forgeo.entities.BaseEntity;
+import ru.goryachev.forgeo.models.BaseEntity;
 
 import java.util.List;
 
