@@ -5,37 +5,37 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "locations")
+//@Table(name = "locations")
 public class Location extends BaseEntity {
 
-    @Column (name = "longitude")
-    private Double lng;
+    //@Column (name = "longitude")
+    private Integer lng;
 
-    @Column (name = "latitude")
-    private Double lat;
+    //@Column (name = "latitude")
+    private Integer lat;
 
-    @Column (name = "postal_address")
+    //@Column (name = "postal_address")
     private String postalAddr;
 
-    @Column (name = "postal_address")
+    //@Column (name = "constr_address")
     private String constrAddr;
 
-    @Column (name = "linear")
+    //@Column (name = "linear")
     private Boolean isLinear;
 
-    public Double getLng() {
+    public Integer getLng() {
         return lng;
     }
 
-    public void setLng(Double lng) {
+    public void setLng(Integer lng) {
         this.lng = lng;
     }
 
-    public Double getLat() {
+    public Integer getLat() {
         return lat;
     }
 
-    public void setLat(Double lat) {
+    public void setLat(Integer lat) {
         this.lat = lat;
     }
 
