@@ -5,22 +5,22 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-//@Table(name = "locations")
+@Table(name = "locations")
 public class Location extends BaseEntity {
 
-    //@Column (name = "longitude")
+    @Column (name = "longitude")
     private Integer lng;
 
-    //@Column (name = "latitude")
+    @Column (name = "latitude")
     private Integer lat;
 
-    //@Column (name = "postal_address")
+    @Column (name = "postal_address")
     private String postalAddr;
 
-    //@Column (name = "constr_address")
+    @Column (name = "constr_address")
     private String constrAddr;
 
-    //@Column (name = "linear")
+    @Column (name = "linear")
     private Boolean isLinear;
 
     public Integer getLng() {

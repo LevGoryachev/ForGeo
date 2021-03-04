@@ -5,16 +5,16 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-//@Table (name = "constructions")
+@Table (name = "constructions")
 public class Construction extends BaseEntity {
 
-    //@Column (name = "code_number")
+    @Column (name = "code_number")
     private String codeNumber;
 
-    //@Column (name = "name")
+    @Column (name = "name")
     private String name;
 
-    //@Column (name = "description")
+    @Column (name = "description")
     private String description;
 
     public String getCodeNumber() {
