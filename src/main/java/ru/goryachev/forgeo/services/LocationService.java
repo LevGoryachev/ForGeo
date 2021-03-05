@@ -1,22 +1,21 @@
 package ru.goryachev.forgeo.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ru.goryachev.forgeo.models.Location;
-import ru.goryachev.forgeo.repositories.LocationRepo;
-
 import java.util.List;
 
+@Service
 public class LocationService {
 
-    @Autowired
-    private LocationRepo locationRepo;
+    //@Autowired
+    //private LocationRepo locationRepo;
 
     public List<Location> getAll() {
-        return locationRepo.findAll();
+        return null;
     }
 
     public Location getById(int id) {
-        return locationRepo.getOne(id);
+        return null;
     }
 
     public Location getByName(String name) {
@@ -24,7 +23,7 @@ public class LocationService {
     }
 
     public void create(Location location) {
-        locationRepo.save(location);
+        //locationRepo.save(location);
     }
 
     public void update(Location location) {
@@ -32,6 +31,6 @@ public class LocationService {
     }
 
     public void delete(int id) {
-        locationRepo.deleteById(id);
+        //locationRepo.deleteById(id);
     }
 }

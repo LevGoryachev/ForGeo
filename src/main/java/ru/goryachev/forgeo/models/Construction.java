@@ -17,6 +17,16 @@ public class Construction extends BaseEntity {
     @Column (name = "description")
     private String description;
 
+    public Construction() {
+    }
+
+    public Construction (String codeNumber, String name, String description) {
+        this.codeNumber = codeNumber;
+        this.name = name;
+        this.description = description;
+    }
+
+
     public String getCodeNumber() {
         return codeNumber;
     }

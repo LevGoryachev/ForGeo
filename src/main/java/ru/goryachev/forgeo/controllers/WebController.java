@@ -1,11 +1,16 @@
 package ru.goryachev.forgeo.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.goryachev.forgeo.models.Construction;
+import ru.goryachev.forgeo.services.ConstructionService;
 
 @RestController
 public class WebController {
+
+    @Autowired
+    private ConstructionService constructionService;
 
     @GetMapping("/main")
     public String mainPage () {
@@ -14,7 +19,9 @@ public class WebController {
 
     @GetMapping("/constructions")
     public String constructions () {
-        
+        //test entity:
+        Construction c = new Construction("Stroyka 1", "Name 1", "somedescription");
+        constructionService.create(c);
         return "List of all constructions";
     }
 /*

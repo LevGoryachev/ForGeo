@@ -23,6 +23,9 @@ public class Location extends BaseEntity {
     @Column (name = "linear")
     private Boolean isLinear;
 
+    public Location() {
+    }
+
     public Integer getLng() {
         return lng;
     }
