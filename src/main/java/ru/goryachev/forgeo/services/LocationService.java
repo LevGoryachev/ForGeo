@@ -1,38 +1,37 @@
 package ru.goryachev.forgeo.services;
 
-import ru.goryachev.forgeo.models.BaseEntity;
+import org.springframework.beans.factory.annotation.Autowired;
+import ru.goryachev.forgeo.models.Location;
+import ru.goryachev.forgeo.repositories.LocationRepo;
 
 import java.util.List;
 
-public class LocationService implements ForGeoService {
+public class LocationService {
 
-    @Override
-    public List getAll() {
+    @Autowired
+    private LocationRepo locationRepo;
+
+    public List<Location> getAll() {
+        return locationRepo.findAll();
+    }
+
+    public Location getById(int id) {
+        return locationRepo.getOne(id);
+    }
+
+    public Location getByName(String name) {
         return null;
     }
 
-    @Override
-    public BaseEntity getById(int id) {
-        return null;
+    public void create(Location location) {
+        locationRepo.save(location);
     }
 
-    @Override
-    public BaseEntity getByName(String name) {
-        return null;
-    }
-
-    @Override
-    public void create(BaseEntity entity) {
+    public void update(Location location) {
 
     }
 
-    @Override
-    public void update(BaseEntity entity) {
-
-    }
-
-    @Override
     public void delete(int id) {
-
+        locationRepo.deleteById(id);
     }
 }

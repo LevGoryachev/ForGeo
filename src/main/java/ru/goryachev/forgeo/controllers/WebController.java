@@ -2,6 +2,7 @@ package ru.goryachev.forgeo.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import ru.goryachev.forgeo.models.Construction;
 
 @RestController
 public class WebController {
@@ -13,6 +14,7 @@ public class WebController {
 
     @GetMapping("/constructions")
     public String constructions () {
+        
         return "List of all constructions";
     }
 /*
