@@ -1,21 +1,20 @@
-package ru.goryachev.forgeo.controllers;
+package ru.goryachev.forgeo.controllers.v2api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.goryachev.forgeo.models.Construction;
 import ru.goryachev.forgeo.services.ConstructionService;
 
 @RestController
-public class WebController {
+@RequestMapping("/api/v2/locations")
+public class LocationController {
 
     @Autowired
     private ConstructionService constructionService;
 
-    @GetMapping("/main")
-    public String mainPage () {
-        return "APP info: ForGeo (by Lev Goryachev) webapp is based on SpringBoot, Hibernate, PostgreSQL; frontend module - ReactJS";
-    }
+
 
     @GetMapping("/constructions")
     public String constructions () {
@@ -24,18 +23,7 @@ public class WebController {
         constructionService.create(c);
         return "List of all constructions";
     }
-/*
-    @GetMapping("/{name}")
-    public String getConstructionByName () {
-        return "Construction";
-    }
 
-    @GetMapping("/{id}")
-    public String getConstructionById () {
-        return "Construction";
-    }
-
-*/
 
     @GetMapping("/coordinates")
     public String coordinates () {

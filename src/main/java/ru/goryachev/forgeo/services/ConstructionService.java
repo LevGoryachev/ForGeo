@@ -17,8 +17,8 @@ public class ConstructionService {
         return constructionRepo.findAll();
     }
 
-    public Construction getById(int id) {
-        return constructionRepo.getOne(id);
+    public Construction getById(Integer id) {
+        return constructionRepo.findById(id).get();
     }
 
     public Construction getByName(String name) {
