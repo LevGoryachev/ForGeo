@@ -26,10 +26,18 @@ public class ConstructionService {
     }
 
     public void create(Construction construction) {
-        constructionRepo.save(construction);
+
+       constructionRepo.save(construction);
     }
 
-    public void update(Construction construction) {
+    public void update(Integer id, Construction modifiedConstruction) {
+
+        Construction construction = constructionRepo.findById(id).get();;
+        construction.setDescription(modifiedConstruction.getDescription());
+        construction.setCodeNumber(modifiedConstruction.getCodeNumber());
+        construction.setName(modifiedConstruction.getName());
+
+        constructionRepo.save(construction);
     }
 
     public void delete(int id) {
