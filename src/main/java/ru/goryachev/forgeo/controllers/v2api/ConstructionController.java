@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.goryachev.forgeo.models.Construction;
 import ru.goryachev.forgeo.services.ConstructionService;
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v2/constructions")
@@ -16,6 +17,15 @@ public class ConstructionController {
 
     @Autowired
     private ConstructionService constructionService;
+
+    @RequestMapping (method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Construction>> getAllConstructions () {
+
+        List <Construction> constructions = constructionService.getAll();
+
+        return new ResponseEntity<>(constructions, HttpStatus.OK);
+
+    }
 
     //@GetMapping (value = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @RequestMapping (value = "{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
