@@ -5,10 +5,10 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.goryachev.forgeo.models.Construction;
 import ru.goryachev.forgeo.services.ConstructionService;
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api/v2/constructions")
@@ -32,7 +32,7 @@ public class ConstructionController {
     }
 
     @RequestMapping (value = "create", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Construction> createConstruction (@RequestBody @Validated Construction construction) {
+    public ResponseEntity<Construction> createConstruction (@RequestBody @Valid Construction construction) {
 
         HttpHeaders httpHeaders = new HttpHeaders();
 
@@ -42,7 +42,7 @@ public class ConstructionController {
     }
 
     @RequestMapping (value = "{id}/update", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Construction> updateConstruction (@PathVariable ("id") int ConstructionID, @RequestBody @Validated Construction modifiedConstruction) {
+    public ResponseEntity<Construction> updateConstruction (@PathVariable ("id") int ConstructionID, @RequestBody @Valid Construction modifiedConstruction) {
 
         HttpHeaders httpHeaders = new HttpHeaders();
 
