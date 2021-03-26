@@ -36,7 +36,6 @@ public class ConstructionService {
         construction.setDescription(modifiedConstruction.getDescription());
         construction.setCodeNumber(modifiedConstruction.getCodeNumber());
         construction.setName(modifiedConstruction.getName());
-
         constructionRepo.save(construction);
     }
 

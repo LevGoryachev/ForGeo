@@ -41,7 +41,7 @@ public class ConstructionController {
         return new ResponseEntity<>(construction, HttpStatus.OK);
     }
 
-    @RequestMapping (value = "create", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping (method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Construction> createConstruction (@RequestBody @Valid Construction construction) {
 
         HttpHeaders httpHeaders = new HttpHeaders();
@@ -51,7 +51,7 @@ public class ConstructionController {
         return new ResponseEntity<>(construction, httpHeaders, HttpStatus.CREATED);
     }
 
-    @RequestMapping (value = "{id}/update", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping (value = "{id}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Construction> updateConstruction (@PathVariable ("id") int ConstructionID, @RequestBody @Valid Construction modifiedConstruction) {
 
         HttpHeaders httpHeaders = new HttpHeaders();
@@ -61,7 +61,7 @@ public class ConstructionController {
         return new ResponseEntity<>(modifiedConstruction, httpHeaders, HttpStatus.OK);
     }
 
-    @RequestMapping (value = "{id}/delete", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping (value = "{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Construction> deleteConstruction (@PathVariable ("id") int ConstructionID) {
 
         constructionService.delete(ConstructionID);
