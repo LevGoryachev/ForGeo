@@ -17,7 +17,7 @@ public class ConstructionService {
         return constructionRepo.findAll();
     }
 
-    public Construction getById(Integer id) {
+    public Construction getById(Long id) {
         return constructionRepo.findById(id).get();
     }
 
@@ -30,7 +30,7 @@ public class ConstructionService {
        constructionRepo.save(construction);
     }
 
-    public void update(Integer id, Construction modifiedConstruction) {
+    public void update(Long id, Construction modifiedConstruction) {
 
         Construction construction = constructionRepo.findById(id).get();;
         construction.setDescription(modifiedConstruction.getDescription());
@@ -39,7 +39,7 @@ public class ConstructionService {
         constructionRepo.save(construction);
     }
 
-    public void delete(int id) {
+    public void delete(Long id) {
         constructionRepo.deleteById(id);
     }
 }

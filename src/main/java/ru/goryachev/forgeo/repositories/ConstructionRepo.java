@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import ru.goryachev.forgeo.models.Construction;
 
 @Repository
-public interface ConstructionRepo extends JpaRepository<Construction, Integer> {
+public interface ConstructionRepo extends JpaRepository<Construction, Long> {
 }

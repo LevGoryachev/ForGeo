@@ -29,7 +29,7 @@ public class ConstructionController {
 
     //@GetMapping (value = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @RequestMapping (value = "{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Construction> getConstruction (@PathVariable ("id") int ConstructionID) {
+    public ResponseEntity<Construction> getConstruction (@PathVariable ("id") Long ConstructionID) {
 //        if (ConstructionID == null) {
 //            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 //        }
@@ -52,7 +52,7 @@ public class ConstructionController {
     }
 
     @RequestMapping (value = "{id}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Construction> updateConstruction (@PathVariable ("id") int ConstructionID, @RequestBody @Valid Construction modifiedConstruction) {
+    public ResponseEntity<Construction> updateConstruction (@PathVariable ("id") Long ConstructionID, @RequestBody @Valid Construction modifiedConstruction) {
 
         HttpHeaders httpHeaders = new HttpHeaders();
 
@@ -62,11 +62,10 @@ public class ConstructionController {
     }
 
     @RequestMapping (value = "{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Construction> deleteConstruction (@PathVariable ("id") int ConstructionID) {
+    public ResponseEntity<Construction> deleteConstruction (@PathVariable ("id") Long ConstructionID) {
 
         constructionService.delete(ConstructionID);
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-
 }

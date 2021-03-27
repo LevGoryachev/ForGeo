@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import ru.goryachev.forgeo.models.Location;
 
 @Repository
-public interface LocationRepo extends JpaRepository<Location, Integer> {
+public interface LocationRepo extends JpaRepository<Location, Long> {
 }

@@ -28,7 +28,7 @@ public class LocationController {
     }
 
     @RequestMapping (value = "{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Location> getLocation (@PathVariable("id") int locationID) {
+    public ResponseEntity<Location> getLocation (@PathVariable("id") Long locationID) {
 
         Location location = locationService.getById(locationID);
 
@@ -46,7 +46,7 @@ public class LocationController {
     }
 
     @RequestMapping (value = "{id}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Location> updateLocation (@PathVariable ("id") int locationID, @RequestBody @Valid Location modifiedLocation) {
+    public ResponseEntity<Location> updateLocation (@PathVariable ("id") Long locationID, @RequestBody @Valid Location modifiedLocation) {
 
         HttpHeaders httpHeaders = new HttpHeaders();
 
@@ -56,7 +56,7 @@ public class LocationController {
     }
 
     @RequestMapping (value = "{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Location> deleteLocation (@PathVariable ("id") int locationID) {
+    public ResponseEntity<Location> deleteLocation (@PathVariable ("id") Long locationID) {
 
         locationService.delete(locationID);
 

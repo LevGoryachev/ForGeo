@@ -17,7 +17,7 @@ public class LocationService {
         return null;
     }
 
-    public Location getById(int id) {
+    public Location getById(Long id) {
         return null;
     }
 
@@ -29,7 +29,7 @@ public class LocationService {
         //locationRepo.save(location);
     }
 
-    public void update(int locationID, Location modifiedLocation) {
+    public void update(Long locationID, Location modifiedLocation) {
 
         Location location = locationRepo.findById(locationID).get();
         location.setLng(modifiedLocation.getLng());
@@ -40,7 +40,7 @@ public class LocationService {
         locationRepo.save(location);
     }
 
-    public void delete(int id) {
+    public void delete(Long id) {
         //locationRepo.deleteById(id);
     }
 }
