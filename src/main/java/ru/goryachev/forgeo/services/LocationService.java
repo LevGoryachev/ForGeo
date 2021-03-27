@@ -14,11 +14,13 @@ public class LocationService {
     private LocationRepo locationRepo;
 
     public List<Location> getAll() {
-        return null;
+
+        return locationRepo.findAll();
     }
 
     public Location getById(Long id) {
-        return null;
+
+        return locationRepo.findById(id).get();
     }
 
     public Location getByName(String name) {
@@ -26,7 +28,7 @@ public class LocationService {
     }
 
     public void create(Location location) {
-        //locationRepo.save(location);
+        locationRepo.save(location);
     }
 
     public void update(Long locationID, Location modifiedLocation) {
@@ -41,6 +43,6 @@ public class LocationService {
     }
 
     public void delete(Long id) {
-        //locationRepo.deleteById(id);
+        locationRepo.deleteById(id);
     }
 }
