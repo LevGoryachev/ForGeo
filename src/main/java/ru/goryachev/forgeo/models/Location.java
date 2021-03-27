@@ -8,38 +8,38 @@ import javax.persistence.Table;
 @Table(name = "locations")
 public class Location extends BaseEntity {
 
-    @Column (name = "longitude")
-    private Integer lng;
+    @Column(name = "latitude")
+    private Double lat;
 
-    @Column (name = "latitude")
-    private Integer lat;
+    @Column(name = "longitude")
+    private Double lng;
 
-    @Column (name = "postal_address")
+    @Column(name = "postal_address")
     private String postalAddr;
 
-    @Column (name = "constr_address")
+    @Column(name = "constr_address")
     private String constrAddr;
 
-    @Column (name = "linear")
+    @Column(name = "linear")
     private Boolean isLinear;
 
     public Location() {
     }
 
-    public Integer getLng() {
-        return lng;
-    }
-
-    public void setLng(Integer lng) {
-        this.lng = lng;
-    }
-
-    public Integer getLat() {
+    public Double getLat() {
         return lat;
     }
 
-    public void setLat(Integer lat) {
+    public void setLat(Double lat) {
         this.lat = lat;
+    }
+
+    public Double getLng() {
+        return lng;
+    }
+
+    public void setLng(Double lng) {
+        this.lng = lng;
     }
 
     public String getPostalAddr() {
