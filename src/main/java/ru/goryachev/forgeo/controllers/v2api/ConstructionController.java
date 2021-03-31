@@ -24,7 +24,6 @@ public class ConstructionController {
         List <Construction> constructions = constructionService.getAll();
 
         return new ResponseEntity<>(constructions, HttpStatus.OK);
-
     }
 
     //@GetMapping (value = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)

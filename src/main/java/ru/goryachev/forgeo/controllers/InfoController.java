@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-public class MainWebController {
+public class InfoController {
 
     @GetMapping("/about")
     public String mainPage () {

@@ -8,9 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.goryachev.forgeo.models.Location;
 import ru.goryachev.forgeo.services.LocationService;
-
 import javax.validation.Valid;
 import java.util.List;
+
 
 @RestController
 @RequestMapping("/api/v2/locations")
@@ -62,10 +62,4 @@ public class LocationController {
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-
-    @GetMapping("/coordinates")
-    public String coordinates () {
-        return "List of all coordinates";
-    }
-
 }
