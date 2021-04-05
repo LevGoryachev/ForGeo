@@ -5,6 +5,7 @@ src/reactjs/node_modules/
 src/reactjs/node/
 src/reactjs/build/
 src/reactjs/coverage/
+src/reactjs/.next
 
 # reactjs
 .DS_Store
