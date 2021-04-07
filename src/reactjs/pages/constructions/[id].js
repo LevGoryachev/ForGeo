@@ -12,3 +12,10 @@ export default function Construction({construction}) {
     )
 };
 
+export async function getServerSideProps({params}) {
+    const response = await fetch(`https:/forgeo/api/v2/constructions/${params.id}`)
+    const construction = await response.json()
+    return {
+        props: {construction}, // will be passed to the page component as props
+    }
+}
