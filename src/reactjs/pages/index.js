@@ -1,6 +1,6 @@
 import AHeader from "../components/AHeader";
 import BSideBar from "../components/BSideBar";
-import CMainBlock from "../components/CMainBlock";
+import CMainHome from "../components/CMainHome";
 import DClear from "../components/DClear";
 import EFooter from "../components/EFooter";
 
@@ -10,7 +10,7 @@ const Index = () => {
         <div id="container">
             <AHeader />
             <BSideBar />
-            <CMainBlock />
+            <CMainHome />
             <DClear />
             <EFooter />
         </div>
