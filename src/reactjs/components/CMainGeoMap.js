@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import Headline from "./Headline";
 
-const GeoLocations = () => {
+const GeoMap = () => {
     //test list:
     const [geoLocations, setGeoLocations]  = useState([
         {id: 1, lat: 36.124, lng: -115.122,  postalAddr: 'Palkino, Centralnyaya', constrAddr: 'Palkino 4', isLinear: false},
@@ -26,4 +26,4 @@ const GeoLocations = () => {
     );
 };
 
-export default GeoLocations;
+export default GeoMap;

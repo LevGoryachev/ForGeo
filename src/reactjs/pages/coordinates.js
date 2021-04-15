@@ -2,19 +2,18 @@ import AHeader from "../components/AHeader";
 import BSideBar from "../components/BSideBar";
 import DClear from "../components/DClear";
 import EFooter from "../components/EFooter";
-import CMainGeoMap from "../components/CMainGeoMap";
+import CMainGeoCoordinates from "../components/CMainGeoCoordinates";
 
-
-const GeoMap = () => {
+const GeoCoordinates = () => {
     return (
         <div id="container">
             <AHeader />
             <BSideBar />
-            <CMainGeoMap />
+            <CMainGeoCoordinates />
             <DClear />
             <EFooter />
         </div>
     );
 };
 
-export default GeoMap;
+export default GeoCoordinates;
