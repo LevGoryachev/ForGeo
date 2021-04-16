@@ -4,7 +4,6 @@ import CMainHome from "../components/CMainHome";
 import DClear from "../components/DClear";
 import EFooter from "../components/EFooter";
 
-
 const Index = () => {
     return (
         <div id="container">
