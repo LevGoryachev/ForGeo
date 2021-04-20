@@ -1,6 +1,13 @@
 import '../styles/app.css'
+import {ForGeoContext} from "../stores/store";
+import React, { useState } from 'react'
 
 // This default export is required in a new `pages/_app.js` file.
 export default function MyApp({ Component, pageProps }) {
-    return <Component {...pageProps} />
+    const [context, setContext] = useState("default context value");
+    return (
+        <ForGeoContext.Provider value={[context, setContext]}>
+            <Component {...pageProps} />
+        </ForGeoContext.Provider>
+        )
 }

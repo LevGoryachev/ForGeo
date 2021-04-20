@@ -1,11 +1,16 @@
 import Headline from "./Headline";
 import Link from "next/link";
+import React, { useContext, useState } from 'react'
+import {ForGeoContext} from "../stores/store";
 
 const Constructions = (props) => {
+
+    const value = useContext(ForGeoContext);
 
     return (
         <div id="c_main">
             <Headline />
+            <p>{value}</p>
             <table border="1" cellPadding="5">
                 <tr>
                     <td width="100px">Database ID</td>
@@ -25,10 +30,7 @@ const Constructions = (props) => {
                 )}
             </table>
 
-            <h2>List of constructions:</h2>
-
         </div>
     );
 };
-
 export default Constructions;
