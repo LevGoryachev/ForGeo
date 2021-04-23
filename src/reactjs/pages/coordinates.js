@@ -3,6 +3,7 @@ import BSideBar from "../components/BSideBar";
 import DClear from "../components/DClear";
 import EFooter from "../components/EFooter";
 import CMainGeoCoordinates from "../components/CMainGeoCoordinates";
+import {CRUDlocations} from "../service_components/CRUDLocations";
 
 /*import dynamic from 'next/dynamic'
 const DynamicComponent = dynamic(() =>
@@ -23,11 +24,19 @@ const GeoCoordinates = ({geoLocData}) => {
 export default GeoCoordinates;
 
 export async function getStaticProps(context) {
+    const geoLocData = await CRUDlocations.getAll();
+    console.log(geoLocData);
+    return {
+        props: {geoLocData}, // will be passed to the page component as props
+    }
+}
+
+/*export async function getStaticProps(context) {
     const response = await fetch('http://localhost:8080/Gradle___ru_goryachev___ForGeo_war/api/v2/locations');
     const geoLocData = await response.json();
     console.log(geoLocData);
     return {
         props: {geoLocData}, // will be passed to the page component as props
     }
-}
+}*/
 

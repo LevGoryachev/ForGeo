@@ -14,7 +14,7 @@ const CMainHome = () => {
             </p>
             <p>
                 <Link href={`/geomap`}>
-                    <a>"Construction site locations"</a>
+                    <a>"GeoMap locations"</a>
                 </Link>
             </p>
             <p>

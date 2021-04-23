@@ -3,6 +3,7 @@ import BSideBar from "../components/BSideBar";
 import DClear from "../components/DClear";
 import EFooter from "../components/EFooter";
 import CMainGeoMap from "../components/CMainGeoMap";
+import {CRUDlocations} from "../service_components/CRUDLocations";
 
 const GeoMap = ({geoLocData}) => {
     return (
@@ -18,8 +19,7 @@ const GeoMap = ({geoLocData}) => {
 export default GeoMap;
 
 export async function getStaticProps(context) {
-    const response = await fetch('http://localhost:8080/Gradle___ru_goryachev___ForGeo_war/api/v2/locations');
-    const geoLocData = await response.json();
+    const geoLocData = await CRUDlocations.getAll();
     console.log(geoLocData);
     return {
         props: {geoLocData}, // will be passed to the page component as props

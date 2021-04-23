@@ -10,6 +10,7 @@ export const CRUDlocations = {
     delete: _delete
 };
 
+const apiUrl = `http://localhost:8080/Gradle___ru_goryachev___ForGeo_war/api/v2`
 const baseUrl = `${apiUrl}/locations`;
 
 function getAll() {
@@ -17,7 +18,7 @@ function getAll() {
 }
 
 function getById(id) {
-    return fetchWrapper.get(`${baseUrl}/locations/${id}`);
+    return fetchWrapper.get(`${baseUrl}/${id}`);
 }
 
 function create(params) {
@@ -25,10 +26,10 @@ function create(params) {
 }
 
 function update(id, params) {
-    return fetchWrapper.put(`${baseUrl}/locations/${id}`, params);
+    return fetchWrapper.put(`${baseUrl}/${id}`, params);
 }
 
 // prefixed with underscored because delete is a reserved word in javascript
 function _delete(id) {
-    return fetchWrapper.delete(`${baseUrl}/locations/${id}`);
+    return fetchWrapper.delete(`${baseUrl}/${id}`);
 }
