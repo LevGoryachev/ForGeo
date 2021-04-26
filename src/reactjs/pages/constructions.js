@@ -22,6 +22,6 @@ export async function getStaticProps(context) {
     const constructionsData = await CRUDconstructions.getAll();
     console.log(constructionsData);
     return {
-        props: {constructionsData}, // will be passed to the page component as props
+        props: {constructionsData} // will be passed to the page component as props
     }
 }

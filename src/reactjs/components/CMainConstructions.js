@@ -16,6 +16,7 @@ const Constructions = (props) => {
                     <td width="100px">Database ID</td>
                     <td width="200px">CODE-NUMBER</td>
                     <td width="200px">Name of project</td>
+                    <td colSpan="2">EDIT DATA</td>
                 </tr>
                 {props.getCon.map((construction) =>
                     <tr>
@@ -26,6 +27,11 @@ const Constructions = (props) => {
                                 <a>{construction.name}</a>
                             </Link>
                         </td>
+
+                        <td>
+
+                        </td>
+
                     </tr>
                 )}
             </table>
