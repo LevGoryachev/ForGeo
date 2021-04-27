@@ -1,7 +1,7 @@
 import Headline from "./Headline";
 import Link from "next/link";
 
-const CMainHome = () => {
+const cMainHome = () => {
     return (
         <div id="c_main">
             <Headline />
@@ -26,4 +26,4 @@ const CMainHome = () => {
     );
 };
 
-export default CMainHome;
+export default cMainHome;

@@ -25,3 +25,14 @@ export async function getStaticProps(context) {
         props: {constructionsData} // will be passed to the page component as props
     }
 }
+
+/*export async function updateData() {
+    const constructionsData = await CRUDconstructions.getAll();
+    return {
+        props: {constructionsData}
+    }
+}*/
+
+export async function constructionDel(id) {
+    await CRUDconstructions.delete(id);
+}

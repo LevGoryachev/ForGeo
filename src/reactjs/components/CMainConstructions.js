@@ -2,8 +2,10 @@ import Headline from "./Headline";
 import Link from "next/link";
 import React, { useContext, useState } from 'react'
 import {ForGeoContext} from "../stores/store";
+import Constructions, {constructionDel} from "../pages/constructions";
 
-const Constructions = (props) => {
+
+const cMainConstructions = (props) => {
 
     const value = useContext(ForGeoContext);
 
@@ -27,16 +29,15 @@ const Constructions = (props) => {
                                 <a>{construction.name}</a>
                             </Link>
                         </td>
-
                         <td>
-
+                            <button onClick={() => {constructionDel(construction.id).then(() => {
+                                window.location.href='/constructions'
+                            });}}>DELETE</button>
                         </td>
-
                     </tr>
                 )}
             </table>
-
         </div>
     );
 };
-export default Constructions;
+export default cMainConstructions;

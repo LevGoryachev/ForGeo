@@ -1,6 +1,6 @@
 import Headline from "./Headline";
 
-const ConstructionById = (props) => {
+const cMainConstructionById = (props) => {
 
     const construction = props.getById;
 
@@ -22,5 +22,5 @@ const ConstructionById = (props) => {
     );
 };
 
-export default ConstructionById;
+export default cMainConstructionById;
 
