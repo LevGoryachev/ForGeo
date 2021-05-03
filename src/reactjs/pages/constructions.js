@@ -1,8 +1,8 @@
-import AHeader from "../components/AHeader";
-import BSideBar from "../components/BSideBar";
-import CMainConstructions from "../components/CMainConstructions";
-import DClear from "../components/DClear";
-import EFooter from "../components/EFooter";
+import AHeader from "../page_components/AHeader";
+import BSideBar from "../page_components/BSideBar";
+import CMainConstructions from "../page_components/CMainConstructions";
+import DClear from "../page_components/DClear";
+import EFooter from "../page_components/EFooter";
 import {CRUDconstructions} from "../service_components/CRUDConstructions";
 import React, { useContext, useState } from 'react'
 import {ForGeoContext} from "../stores/store";
@@ -30,17 +30,6 @@ export default Constructions;
     }
 }*/
 
-/*export async function getStaticProps(ForGeoContext) {
-
-    const constructionsData = constructionsx;
-    console.log(constructionsData);
-    return {
-        props: {constructionsData} // will be passed to the page component as props
-    }
-}*/
-
-export const newNumber = 15;
-
 /*export async function updateData(ForGeoContext) {
 
     const constructionsData = await CRUDconstructions.getAll();
@@ -48,7 +37,6 @@ export const newNumber = 15;
         props: {constructionsData}
     }
 }*/
-
 
 export async function constructionDel(id) {
     await CRUDconstructions.delete(id);

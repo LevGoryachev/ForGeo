@@ -1,8 +1,8 @@
-import AHeader from "../../components/AHeader";
-import BSideBar from "../../components/BSideBar";
-import CMainConstructionById from "../../components/CMainConstructionById";
-import DClear from "../../components/DClear";
-import EFooter from "../../components/EFooter";
+import AHeader from "../../page_components/AHeader";
+import BSideBar from "../../page_components/BSideBar";
+import CMainConstructionById from "../../page_components/CMainConstructionById";
+import DClear from "../../page_components/DClear";
+import EFooter from "../../page_components/EFooter";
 import {CRUDconstructions} from "../../service_components/CRUDConstructions";
 
 const Constructions = ({OneConstruction}) => {

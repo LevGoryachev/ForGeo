@@ -1,8 +1,8 @@
-import AHeader from "../components/AHeader";
-import BSideBar from "../components/BSideBar";
-import DClear from "../components/DClear";
-import EFooter from "../components/EFooter";
-import CMainGeoCoordinates from "../components/CMainGeoCoordinates";
+import AHeader from "../page_components/AHeader";
+import BSideBar from "../page_components/BSideBar";
+import DClear from "../page_components/DClear";
+import EFooter from "../page_components/EFooter";
+import CMainGeoCoordinates from "../page_components/CMainGeoCoordinates";
 import {CRUDlocations} from "../service_components/CRUDLocations";
 
 /*import dynamic from 'next/dynamic'

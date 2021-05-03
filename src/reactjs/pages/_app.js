@@ -9,7 +9,6 @@ import {
 import React, { useState } from 'react'
 import {CRUDconstructions} from "../service_components/CRUDConstructions";
 
-
 // This default export is required in a new `pages/_app.js` file.
 export default function MyApp({ Component, pageProps }) {
 

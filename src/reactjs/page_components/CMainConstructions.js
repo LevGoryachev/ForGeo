@@ -11,8 +11,7 @@ const cMainConstructions = (props) => {
     const {constructionsx, updConstructions} = useContext(ForGeoContext);
 
     const [constructionsxState, updConstructionsState] = useState(constructionsx);
-    //console.log(constructionsxState);
-    //const {constructionsx, updConstructions} = useContext(ForGeoContext);
+
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
@@ -51,9 +50,6 @@ const cMainConstructions = (props) => {
                     <td width="200px">Name of project</td>
                     <td colSpan="2">EDIT DATA</td>
                 </tr>
-
-
-
                 {constructionsxState.map((construction) =>
                     <tr>
                         <td width="100px">{construction.id}</td>
@@ -64,7 +60,16 @@ const cMainConstructions = (props) => {
                             </Link>
                         </td>
                         <td>
-                            <button onClick={() => {constructionDel(construction.id).then(() => {
+                            <button onClick={() => {constructionDel(construction.id)
+                                .then(() => {
+                                CRUDconstructions.getAll()
+                                    .then((x) => {
+                                        updConstructionsState(x);
+                                    })
+                                    .then((y) => console.log(y))
+                                    .catch((err) => {
+                                        console.log(err);
+                                    });
                                 //window.location.href='/constructions'
                             });}}>DELETE</button>
                         </td>
@@ -79,40 +84,10 @@ const cMainConstructions = (props) => {
                                     console.log(err);
                                 });}}>CHK Context</button>
 
-                            {/*<button onClick={() => {constructionDel(construction.id).then(() => {
-                                //updConstructions(updateData());
-
-
-                            });}}>CHK Del</button>*/}
                         </td>
                     </tr>
                 )}
 
-                {/*{props.getCon.map((construction) =>
-                    <tr>
-                        <td width="100px">{construction.id}</td>
-                        <td width="200px">{construction.codeNumber}</td>
-                        <td width="500px">
-                            <Link href={`/constructions/${construction.id}`}>
-                                <a>{construction.name}</a>
-                            </Link>
-                        </td>
-                        <td>
-                            <button onClick={() => {constructionDel(construction.id).then(() => {
-                                //window.location.href='/constructions'
-                            });}}>DELETE</button>
-                        </td>
-                        <td>
-                            <button onClick={() => setLanguage("new context")}>CHK Context</button>
-                            <button onClick={() => setLanguage(newNumber)}>CHK Context</button>
-                            <button onClick={() => {constructionDel(construction.id).then(() => {
-                                updConstructions(updateData());
-
-
-                            });}}>CHK Del</button>
-                        </td>
-                    </tr>
-                )}*/}
                 {/*<tr>
 
                         <td > {const nameInput = () = {<input title="ID" type="text" const name="name"></input>}}</td>
