@@ -65,3 +65,7 @@ body {
   float: left;
   bottom: 15%;
 }
+
+input[type=text]{
+  width:800px;
+}
