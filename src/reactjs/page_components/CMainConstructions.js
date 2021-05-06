@@ -88,6 +88,11 @@ const cMainConstructions = (props) => {
                     </tr>
                 )}
             </table>
+            <p>
+                <Link href={`/constructions/create`}>
+                    <a>Create new</a>
+                </Link>
+            </p>
         </div>
     );
 
