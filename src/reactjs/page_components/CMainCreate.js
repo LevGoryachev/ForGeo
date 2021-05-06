@@ -35,7 +35,7 @@ const CMainCreate = (props) => {
                 <input title="Name" name="name" {...register('name')} />
                 <input title="Code-Number of construction" name="codeNumber" {...register('codeNumber')} />
                 <input title="Description" name="description" {...register('description')} />
-                <button type="submit" >SUB</button>
+                <button class="buttonblick" type="submit" >SUBMIT</button>
             </form>
         </div>
     );

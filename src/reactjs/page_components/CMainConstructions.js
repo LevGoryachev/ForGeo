@@ -60,7 +60,7 @@ const cMainConstructions = (props) => {
                             </Link>
                         </td>
                         <td>
-                            <button onClick={() => {constructionDel(construction.id)
+                            <button class="buttonblick" onClick={() => {constructionDel(construction.id)
                                 .then(() => {
                                 CRUDconstructions.getAll()
                                     .then((x) => {
@@ -90,7 +90,7 @@ const cMainConstructions = (props) => {
             </table>
             <p>
                 <Link href={`/constructions/create`}>
-                    <a>Create new</a>
+                    <a class="buttonblick">ADD NEW</a>
                 </Link>
             </p>
         </div>
