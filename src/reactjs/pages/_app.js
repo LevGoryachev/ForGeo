@@ -16,8 +16,8 @@ export default function MyApp({ Component, pageProps }) {
     const value = {language, setLanguage};*/
 
     const [constructionsx, updConstructions] = useState(getSyncInitDataInMemory());
-    console.log('0st info log' + constructionsx);
-    console.log(constructionsx);
+    //console.log('0st info log' + constructionsx);
+    //console.log(constructionsx);
     const value = {constructionsx, updConstructions};
 
     return (

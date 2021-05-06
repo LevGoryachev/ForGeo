@@ -20,7 +20,7 @@ const cMainConstructions = (props) => {
             .then((x) => {
                 updConstructionsState(x);
             })
-            .then((y) => console.log(y))
+            .then((x) => console.log(x))
             .catch((err) => {
                 console.log(err);
             })
@@ -87,19 +87,6 @@ const cMainConstructions = (props) => {
                         </td>
                     </tr>
                 )}
-
-                {/*<tr>
-
-                        <td > {const nameInput = () = {<input title="ID" type="text" const name="name"></input>}}</td>
-                        <td ><input title="ID" type="text" name="codeNumber"></input></td>
-                        <td ><input title="ID" type="text" name="description"></input></td>
-
-                        <td colSpan="2"><input type="submit" value="ADD" onSubmit={() => {CRUDconstructions.create().then(() => {
-                            window.location.href='/constructions';
-                            console.log(nameInput);
-                        });}}/></td>
-
-                </tr>*/}
             </table>
         </div>
     );
