@@ -4,6 +4,7 @@ import React, {useContext, useState, useCallback} from "react";
 import {CRUDconstructions} from "../service_components/CRUDConstructions";
 import {ForGeoContext} from "../stores/store";
 import {constructionPost} from "../pages/constructions/create";
+import Router from 'next/router';
 
 const CMainCreate = (props) => {
 
@@ -18,14 +19,18 @@ const CMainCreate = (props) => {
                     .then((x) => {
                         updConstructionsState(x);
                     })
+                    .then((y) => {
+                        Router.push("/constructions").then(y => console.log(y));
+                    })
                     .then((y) => console.log(y))
                     .catch((err) => {
                         console.log(err);
                     });
                 //window.location.href='/constructions'
             });
-        console.log(data)
-    }
+
+        console.log(data);
+    };
 
     return (
         <div id="c_main">
@@ -60,5 +65,5 @@ const CMainCreate = (props) => {
             </form>
         </div>
     );
-}
+};
 export default CMainCreate;
