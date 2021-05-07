@@ -66,8 +66,22 @@ body {
   bottom: 15%;
 }
 
+
+.maintable {
+  border: 1px;
+  padding:  5px;
+  position: center;
+  margin: 10px auto;
+  text-align: left;
+}
+
 input[type=text]{
-  width:800px;
+  width:300px;
+}
+
+textarea{
+  width:500px;
+  height:150px;
 }
 
 .mainearbutton {

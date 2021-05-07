@@ -30,12 +30,33 @@ const CMainCreate = (props) => {
     return (
         <div id="c_main">
             <Headline />
-            <h4>Signup from sample (third)</h4>
+            <h4>Add new construction site</h4>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <input title="Name" name="name" {...register('name')} />
-                <input title="Code-Number of construction" name="codeNumber" {...register('codeNumber')} />
-                <input title="Description" name="description" {...register('description')} />
-                <button class="buttonblick" type="submit" >SUBMIT</button>
+                <table className="maintable">
+                    <thead>
+                        <tr>
+                            <td><h3>Code-number</h3></td>
+                            <td><h3>Name (project or construction site name)</h3></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input title="Code-Number" type="text" name="codeNumber" {...register('codeNumber')}/></td>
+                            <td><input title="Name" type="text" name="name" {...register('name')}/></td>
+                        </tr>
+                    </tbody>
+                    <thead>
+                        <tr>
+                            <td><h3>Description</h3></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><textarea title="Description" name="description" {...register('description')}/></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button className="buttonblick" type="submit">SUBMIT</button>
             </form>
         </div>
     );

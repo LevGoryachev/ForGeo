@@ -9,17 +9,17 @@ const cMainHome = () => {
             <h3>Service for construction site locations</h3>
             <p>
                 <Link href={`/constructions`}>
-                    <a class="mainearbutton buttonblick">Construction sites</a>
+                    <button className="mainearbutton buttonblick">Construction sites</button>
                 </Link>
             </p>
             <p>
                 <Link href={`/geomap`}>
-                    <a class="mainearbutton buttonblick">GeoMap locations</a>
+                    <button className="mainearbutton buttonblick">GeoMap locations</button>
                 </Link>
             </p>
             <p>
                 <Link href={`/coordinates`}>
-                    <a class="mainearbutton buttonblick">Coordinates</a>
+                    <button className="mainearbutton buttonblick">Coordinates</button>
                 </Link>
             </p>
         </div>

@@ -7,16 +7,32 @@ const cMainConstructionById = (props) => {
     return (
         <div id="c_main">
             <Headline />
-            <h3>General information about id: {construction.id}</h3>
-            <table align="center" border="1" cellPadding="5">
-                <tr>
-                    <td width="400px">Construction site - {construction.name}</td>
-                    <td width="400px">code-number: {construction.codeNumber}</td>
-                </tr>
+            <h3>Construction site (id: {construction.id})</h3>
+            <table className="maintable">
+                <thead>
+                    <tr>
+                        <td><h3>Code-number</h3></td>
+                        <td><h3>Name (project or construction site name)</h3></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td width="400px">Construction site - {construction.name}</td>
+                        <td width="400px">code-number: {construction.codeNumber}</td>
+                    </tr>
+                </tbody>
             </table>
-            <h3>Description:</h3>
-            <table align="center">
-                <td align="left" width="800px">{construction.description}</td>
+            <table className="maintable">
+                <thead>
+                    <tr>
+                        <td><h3>Description</h3></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td align="left" width="800px">{construction.description}</td>
+                    </tr>
+                </tbody>
             </table>
         </div>
     );
