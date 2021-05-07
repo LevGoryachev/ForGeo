@@ -19,5 +19,5 @@ const Constructions = () => {
 export default Constructions;
 
 export async function constructionPost(data) {
-    await CRUDconstructions.create(data);
+    return await CRUDconstructions.create(data);
 }

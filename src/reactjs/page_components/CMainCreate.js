@@ -1,6 +1,6 @@
 import {useForm} from "react-hook-form";
 import Headline from "./Headline";
-import React, {useContext, useState, useCallback} from "react";
+import React, {useContext, useState} from "react";
 import {CRUDconstructions} from "../service_components/CRUDConstructions";
 import {ForGeoContext} from "../stores/store";
 import {constructionPost} from "../pages/constructions/create";
@@ -14,22 +14,20 @@ const CMainCreate = (props) => {
 
     const onSubmit = (data) => {
         constructionPost(data)
+            .then((d) => {
+                Router.push(`/constructions/${d.id}`).then(d => console.log(d));
+            })
             .then(() => {
                 CRUDconstructions.getAll()
-                    .then((x) => {
-                        updConstructionsState(x);
+                    .then((d) => {
+                        updConstructionsState(d);
                     })
-                    .then((y) => {
-                        Router.push("/constructions").then(y => console.log(y));
-                    })
-                    .then((y) => console.log(y))
+                    .then((d) => console.log(d))
                     .catch((err) => {
                         console.log(err);
                     });
                 //window.location.href='/constructions'
             });
-
-        console.log(data);
     };
 
     return (

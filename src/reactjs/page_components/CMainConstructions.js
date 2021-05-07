@@ -1,33 +1,30 @@
 import Headline from "./Headline";
 import Link from "next/link";
 import React, { useContext, useState, useEffect } from 'react'
-import {ForGeoContext, getAsyncData, getSyncData, getSyncInitDataInMemory, getSyncState} from "../stores/store";
-import Constructions, {constructionDel, getOne, getStaticProps, newNumber, updateData} from "../pages/constructions";
+import {ForGeoContext} from "../stores/store";
+import {constructionDel} from "../pages/constructions";
 import {CRUDconstructions} from "../service_components/CRUDConstructions";
 
 
 const cMainConstructions = (props) => {
 
     const {constructionsx, updConstructions} = useContext(ForGeoContext);
-
     const [constructionsxState, updConstructionsState] = useState(constructionsx);
-
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         setLoading(true);
         CRUDconstructions.getAll()
-            .then((x) => {
-                updConstructionsState(x);
+            .then((d) => {
+                updConstructionsState(d);
             })
-            .then((x) => console.log(x))
+            .then((d) => console.log(d))
             .catch((err) => {
                 console.log(err);
             })
             .finally(() => {
                 setLoading(false);
             });
-
     }, []);
 
     if (loading) {
@@ -63,10 +60,10 @@ const cMainConstructions = (props) => {
                             <button className="buttonblick" onClick={() => {constructionDel(construction.id)
                                 .then(() => {
                                 CRUDconstructions.getAll()
-                                    .then((x) => {
-                                        updConstructionsState(x);
+                                    .then((d) => {
+                                        updConstructionsState(d);
                                     })
-                                    .then((y) => console.log(y))
+                                    .then((d) => console.log(d))
                                     .catch((err) => {
                                         console.log(err);
                                     });

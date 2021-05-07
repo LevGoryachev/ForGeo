@@ -7,7 +7,7 @@ const cMainConstructionById = (props) => {
     return (
         <div id="c_main">
             <Headline />
-            <h3>Construction site (id: {construction.id})</h3>
+            <h3>Construction site "{construction.name}" (id: {construction.id})</h3>
             <table className="maintable">
                 <thead>
                     <tr>
@@ -17,8 +17,8 @@ const cMainConstructionById = (props) => {
                 </thead>
                 <tbody>
                     <tr>
-                        <td width="400px">Construction site - {construction.name}</td>
-                        <td width="400px">code-number: {construction.codeNumber}</td>
+                        <td width="400px">{construction.codeNumber}</td>
+                        <td width="400px">{construction.name}</td>
                     </tr>
                 </tbody>
             </table>
