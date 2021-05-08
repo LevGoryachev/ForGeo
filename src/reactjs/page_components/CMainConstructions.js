@@ -71,16 +71,9 @@ const cMainConstructions = (props) => {
                             });}}>DELETE</button>
                         </td>
                         <td>
-
-                            <button onClick={() => {CRUDconstructions.getAll()
-                                .then((x) => {
-                                    updConstructionsState(x);
-                                })
-                                .then((y) => console.log(y))
-                                .catch((err) => {
-                                    console.log(err);
-                                });}}>CHK Context</button>
-
+                            <Link href={`/constructions/edit/${construction.id}`}>
+                                <button>EDIT</button>
+                            </Link>
                         </td>
                     </tr>
                 )}
