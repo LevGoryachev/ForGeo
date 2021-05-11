@@ -50,8 +50,8 @@ const CMainEdit = (props) => {
                     </thead>
                     <tbody>
                         <tr>
-                            <td><input title="Code-Number" type="text" name="codeNumber" {...register('codeNumber')}/></td>
-                            <td><input title="Name" type="text" name="name" {...register('name')}/></td>
+                            <td><input title="Code-Number" defaultValue={construction.codeNumber} type="text" name="codeNumber" {...register('codeNumber')}/></td>
+                            <td><input title="Name" defaultValue={construction.name} type="text" name="name" {...register('name')}/></td>
                         </tr>
                     </tbody>
                     <thead>
@@ -61,7 +61,7 @@ const CMainEdit = (props) => {
                     </thead>
                     <tbody>
                         <tr>
-                            <td><textarea title="Description" name="description" {...register('description')}/></td>
+                            <td><textarea title="Description" defaultValue={construction.description} name="description" {...register('description')}/></td>
                         </tr>
                     </tbody>
                 </table>
