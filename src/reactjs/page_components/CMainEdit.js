@@ -19,21 +19,24 @@ const CMainEdit = (props) => {
     }
 
     const onSubmit = (data) => {
-        constructionUpd(construction.id, data)
-            .then((d) => {
-                Router.push(`/constructions/${construction.id}`).then(d => console.log(d));
-            })
-            .then(() => {
-                CRUDconstructions.getAll()
+        const opt = confirm("Save changes to DB?");
+            if (opt){
+                constructionUpd(construction.id, data)
                     .then((d) => {
-                        updConstructionsState(d);
+                        Router.push(`/constructions/${construction.id}`).then(d => console.log(d));
                     })
-                    .then((d) => console.log(d))
-                    .catch((err) => {
-                        console.log(err);
+                    .then(() => {
+                        CRUDconstructions.getAll()
+                            .then((d) => {
+                                updConstructionsState(d);
+                            })
+                            .then((d) => console.log(d))
+                            .catch((err) => {
+                                console.log(err);
+                            });
+                        //window.location.href='/constructions'
                     });
-                //window.location.href='/constructions'
-            });
+            }
     };
 
     return (

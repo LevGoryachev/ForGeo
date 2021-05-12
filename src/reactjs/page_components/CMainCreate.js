@@ -13,21 +13,24 @@ const CMainCreate = (props) => {
     const {register, handleSubmit, formState: {errors}} = useForm({mode: 'onBlur'});
 
     const onSubmit = (data) => {
-        constructionPost(data)
-            .then((d) => {
-                Router.push(`/constructions/${d.id}`).then(d => console.log(d));
-            })
-            .then(() => {
-                CRUDconstructions.getAll()
+        const opt = confirm("Create new construction site?");
+            if (opt){
+                constructionPost(data)
                     .then((d) => {
-                        updConstructionsState(d);
+                        Router.push(`/constructions/${d.id}`).then(d => console.log(d));
                     })
-                    .then((d) => console.log(d))
-                    .catch((err) => {
-                        console.log(err);
+                    .then(() => {
+                        CRUDconstructions.getAll()
+                            .then((d) => {
+                                updConstructionsState(d);
+                            })
+                            .then((d) => console.log(d))
+                            .catch((err) => {
+                                console.log(err);
+                            });
+                    //window.location.href='/constructions'
                     });
-                //window.location.href='/constructions'
-            });
+            }
     };
 
     return (

@@ -57,18 +57,25 @@ const cMainConstructions = (props) => {
                             </Link>
                         </td>
                         <td>
-                            <button className="buttonblick" onClick={() => {constructionDel(construction.id)
-                                .then(() => {
-                                CRUDconstructions.getAll()
-                                    .then((d) => {
-                                        updConstructionsState(d);
-                                    })
-                                    .then((d) => console.log(d))
-                                    .catch((err) => {
-                                        console.log(err);
-                                    });
-                                //window.location.href='/constructions'
-                            });}}>DELETE</button>
+                            <button className="buttonblick"
+                                onClick={
+                                    () => {const opt = confirm("Delete this from DB?");
+                                        if (opt){
+                                            constructionDel(construction.id)
+                                                .then(() => {
+                                                    CRUDconstructions.getAll()
+                                                        .then((d) => {
+                                                            updConstructionsState(d);
+                                                        })
+                                                        .then((d) => console.log(d))
+                                                        .catch((err) => {
+                                                        console.log(err);
+                                                        });
+                                                });
+                                        }
+                                    }
+                                } >DELETE
+                            </button>
                         </td>
                         <td>
                             <Link href={`/constructions/edit/${construction.id}`}>
