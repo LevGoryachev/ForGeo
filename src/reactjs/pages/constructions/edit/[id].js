@@ -19,10 +19,6 @@ const Constructions = ({OneConstruction}) => {
 };
 export default Constructions;
 
-/*export async function constructionUpdate(params.id, data) {
-    return await CRUDconstructions.update(id, data);
-}*/
-
 export async function getServerSideProps({params}) {
     const OneConstruction = await CRUDconstructions.getById(params.id);
     console.log(params);

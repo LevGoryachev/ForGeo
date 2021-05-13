@@ -2,7 +2,6 @@ import Headline from "./Headline";
 import Link from "next/link";
 import React, { useContext, useState, useEffect } from 'react'
 import {ForGeoContext} from "../stores/store";
-import {constructionDel} from "../pages/constructions";
 import {CRUDconstructions} from "../service_components/CRUDConstructions";
 
 
@@ -11,6 +10,10 @@ const cMainConstructions = (props) => {
     const {constructionsx, updConstructions} = useContext(ForGeoContext);
     const [constructionsxState, updConstructionsState] = useState(constructionsx);
     const [loading, setLoading] = useState(false);
+
+    const constructionAsyncDel = async (id) => {
+        return CRUDconstructions.delete(id);
+    };
 
     useEffect(() => {
         setLoading(true);
@@ -61,7 +64,7 @@ const cMainConstructions = (props) => {
                                 onClick={
                                     () => {const opt = confirm("Delete this from DB?");
                                         if (opt){
-                                            constructionDel(construction.id)
+                                            constructionAsyncDel(construction.id)
                                                 .then(() => {
                                                     CRUDconstructions.getAll()
                                                         .then((d) => {

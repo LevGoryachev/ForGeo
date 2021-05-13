@@ -14,14 +14,14 @@ const CMainEdit = (props) => {
     const {register, handleSubmit, formState: {errors}} = useForm({mode: 'onBlur'});
 
 
-    const constructionUpd = async (id, data) => {
+    const constructionAsyncUpd = async (id, data) => {
         return await CRUDconstructions.update(id, data);
-    }
+    };
 
     const onSubmit = (data) => {
         const opt = confirm("Save changes to DB?");
             if (opt){
-                constructionUpd(construction.id, data)
+                constructionAsyncUpd(construction.id, data)
                     .then((d) => {
                         Router.push(`/constructions/${construction.id}`).then(d => console.log(d));
                     })

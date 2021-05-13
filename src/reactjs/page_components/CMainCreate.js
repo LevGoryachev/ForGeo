@@ -3,7 +3,6 @@ import Headline from "./Headline";
 import React, {useContext, useState} from "react";
 import {CRUDconstructions} from "../service_components/CRUDConstructions";
 import {ForGeoContext} from "../stores/store";
-import {constructionPost} from "../pages/constructions/create";
 import Router from 'next/router';
 
 const CMainCreate = (props) => {
@@ -12,10 +11,14 @@ const CMainCreate = (props) => {
     const [constructionsxState, updConstructionsState] = useState(constructionsx);
     const {register, handleSubmit, formState: {errors}} = useForm({mode: 'onBlur'});
 
+    const constructionAsyncCreate = async (data) => {
+        return await CRUDconstructions.create(data);
+    };
+
     const onSubmit = (data) => {
         const opt = confirm("Create new construction site?");
             if (opt){
-                constructionPost(data)
+                constructionAsyncCreate(data)
                     .then((d) => {
                         Router.push(`/constructions/${d.id}`).then(d => console.log(d));
                     })
@@ -62,7 +65,7 @@ const CMainCreate = (props) => {
                         </tr>
                     </tbody>
                 </table>
-                <button className="buttonblick" type="submit">SUBMIT</button>
+                <button className="buttonblick" type="submit">CREATE</button>
             </form>
         </div>
     );
