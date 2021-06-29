@@ -1,6 +1,7 @@
 /.gradle/
 /.idea/
 /build/
+*.iml
 src/reactjs/node_modules/
 src/reactjs/node/
 src/reactjs/build/
