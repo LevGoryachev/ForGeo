@@ -2,7 +2,6 @@ package ru.goryachev.forgeo.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.goryachev.forgeo.models.Construction;
 import ru.goryachev.forgeo.repositories.ConstructionRepo;
 import java.util.List;
 

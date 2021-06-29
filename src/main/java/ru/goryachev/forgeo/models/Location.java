@@ -2,10 +2,13 @@ package ru.goryachev.forgeo.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.List;
+import java.util.Objects;
 
 @Entity
-@Table(name = "locations")
+@Table(name = "site_location")
 public class Location extends BaseEntity {
 
     @Column(name = "latitude")
@@ -14,14 +17,9 @@ public class Location extends BaseEntity {
     @Column(name = "longitude")
     private Double lng;
 
-    @Column(name = "postal_address")
-    private String postalAddr;
+    @OneToMany(mappedBy = "location")
+    private List<Address> addresses;
 
-    @Column(name = "constr_address")
-    private String constrAddr;
-
-    @Column(name = "linear")
-    private Boolean isLinear;
 
     public Location() {
     }
@@ -42,27 +40,34 @@ public class Location extends BaseEntity {
         this.lng = lng;
     }
 
-    public String getPostalAddr() {
-        return postalAddr;
+    public List<Address> getAddresses() {
+        return addresses;
     }
 
-    public void setPostalAddr(String postalAddr) {
-        this.postalAddr = postalAddr;
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
     }
 
-    public String getConstrAddr() {
-        return constrAddr;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Location location = (Location) o;
+        return Objects.equals(getLat(), location.getLat()) &&
+                Objects.equals(getLng(), location.getLng()) &&
+                Objects.equals(getAddresses(), location.getAddresses());
     }
 
-    public void setConstrAddr(String constrAddr) {
-        this.constrAddr = constrAddr;
+    @Override
+    public int hashCode() {
+        return Objects.hash(getLat(), getLng(), getAddresses());
     }
 
-    public Boolean getLinear() {
-        return isLinear;
-    }
-
-    public void setLinear(Boolean linear) {
-        isLinear = linear;
+    @Override
+    public String toString() {
+        return "Location{" +
+                "lat=" + lat +
+                ", lng=" + lng +
+                '}';
     }
 }
