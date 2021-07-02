@@ -8,7 +8,7 @@ import ru.goryachev.forgeo.repositories.LocationRepo;
 import java.util.List;
 
 @Service
-public class LocationService {
+public class AddressService {
 
     @Autowired
     private LocationRepo locationRepo;
