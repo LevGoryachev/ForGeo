@@ -8,7 +8,7 @@ import java.util.Objects;
 public class Address extends BaseEntity {
 
     @Column(name = "type")
-    private String lat;
+    private String type;
 
     @Column(name = "line_1")
     private String lineOne;
@@ -32,12 +32,12 @@ public class Address extends BaseEntity {
     //@JoinColumn("")
     private Location location;
 
-    public String getLat() {
-        return lat;
+    public String getType() {
+        return type;
     }
 
-    public void setLat(String lat) {
-        this.lat = lat;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getLineOne() {
@@ -101,7 +101,7 @@ public class Address extends BaseEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Address address = (Address) o;
-        return Objects.equals(getLat(), address.getLat()) &&
+        return Objects.equals(getType(), address.getType()) &&
                 Objects.equals(getLineOne(), address.getLineOne()) &&
                 Objects.equals(getLineTwo(), address.getLineTwo()) &&
                 Objects.equals(getLineThree(), address.getLineThree()) &&
@@ -113,13 +113,13 @@ public class Address extends BaseEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getLat(), getLineOne(), getLineTwo(), getLineThree(), getTownCity(), getCountry(), getZipPostal(), getLocation());
+        return Objects.hash(getType(), getLineOne(), getLineTwo(), getLineThree(), getTownCity(), getCountry(), getZipPostal(), getLocation());
     }
 
     @Override
     public String toString() {
         return "Address{" +
-                "lat='" + lat + '\'' +
+                "lat='" + type + '\'' +
                 ", lineOne='" + lineOne + '\'' +
                 ", lineTwo='" + lineTwo + '\'' +
                 ", lineThree='" + lineThree + '\'' +

@@ -2,8 +2,8 @@ package ru.goryachev.forgeo.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.goryachev.forgeo.models.Location;
-import ru.goryachev.forgeo.repositories.LocationRepo;
+import ru.goryachev.forgeo.models.Address;
+import ru.goryachev.forgeo.repositories.AddressRepo;
 
 import java.util.List;
 
@@ -11,31 +11,29 @@ import java.util.List;
 public class AddressService {
 
     @Autowired
-    private LocationRepo locationRepo;
+    private AddressRepo addressRepo;
 
-    public List<Location> getAll() {
-
-        return locationRepo.findAll();
+    public List<Address> getAll() {
+        return addressRepo.findAll();
     }
 
-    public Location getById(Long id) {
-
-        return locationRepo.findById(id).get();
+    public List<Address> getAllByType(String type) {
+        return addressRepo.findAllByType(type);
     }
 
-    public Location getByName(String name) {
-        return null;
+    public Address getById(Long id) {
+        return addressRepo.findById(id).get();
     }
 
-    public void create(Location location) {
-        locationRepo.save(location);
+    public void create(Address address) {
+        addressRepo.save(address);
     }
 
-    public void update(Location modifiedLocation) {
-        locationRepo.save(modifiedLocation);
+    public void update(Address modifiedAddress) {
+        addressRepo.save(modifiedAddress);
     }
 
     public void delete(Long id) {
-        locationRepo.deleteById(id);
+        addressRepo.deleteById(id);
     }
 }
