@@ -27,12 +27,12 @@ public class LocationService {
         return null;
     }
 
-    public void create(Location location) {
-        locationRepo.save(location);
+    public Location create(Location location) {
+        return locationRepo.save(location);
     }
 
-    public void update(Location modifiedLocation) {
-        locationRepo.save(modifiedLocation);
+    public Location update(Location modifiedLocation) {
+        return locationRepo.save(modifiedLocation);
     }
 
     public void delete(Long id) {

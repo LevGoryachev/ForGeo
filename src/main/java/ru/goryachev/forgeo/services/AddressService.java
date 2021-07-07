@@ -13,11 +13,10 @@ public class AddressService {
     @Autowired
     private AddressRepo addressRepo;
 
-    public List<Address> getAll() {
-        return addressRepo.findAll();
-    }
-
-    public List<Address> getAllByType(String type) {
+    public List<Address> getAll(String type) {
+        if (type == null) {
+            return addressRepo.findAll();
+        }
         return addressRepo.findAllByType(type);
     }
 
@@ -25,12 +24,12 @@ public class AddressService {
         return addressRepo.findById(id).get();
     }
 
-    public void create(Address address) {
-        addressRepo.save(address);
+    public Address create(Address address) {
+        return addressRepo.save(address);
     }
 
-    public void update(Address modifiedAddress) {
-        addressRepo.save(modifiedAddress);
+    public Address update(Address modifiedAddress) {
+        return addressRepo.save(modifiedAddress);
     }
 
     public void delete(Long id) {

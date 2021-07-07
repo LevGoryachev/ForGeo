@@ -1,5 +1,7 @@
 package ru.goryachev.forgeo.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -28,8 +30,9 @@ public class Address extends BaseEntity {
     @Column(name = "zip_postal")
     private String zipPostal;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    //@JoinColumn("")
+    @JoinColumn(name = "site_location_id")
     private Location location;
 
     public String getType() {

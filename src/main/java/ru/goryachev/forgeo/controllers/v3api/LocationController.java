@@ -1,4 +1,4 @@
-package ru.goryachev.forgeo.controllers.v2api;
+package ru.goryachev.forgeo.controllers.v3api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -13,7 +13,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/api/v2/locations")
+@RequestMapping("/api/v3/locations")
 public class LocationController {
 
     @Autowired
@@ -21,45 +21,31 @@ public class LocationController {
 
     @RequestMapping (method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Location>> getAllLocations () {
-
         List <Location> locations = locationService.getAll();
-
         return new ResponseEntity<>(locations, HttpStatus.OK);
     }
 
     @RequestMapping (value = "{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Location> getLocation (@PathVariable("id") Long locationID) {
-
         Location location = locationService.getById(locationID);
-
         return new ResponseEntity<>(location, HttpStatus.OK);
     }
 
     @RequestMapping (method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Location> createLocation (@RequestBody @Valid Location location) {
-
         HttpHeaders httpHeaders = new HttpHeaders();
-
-        locationService.create(location);
-
-        return new ResponseEntity<>(location, httpHeaders, HttpStatus.CREATED);
+        return new ResponseEntity<>(locationService.create(location), httpHeaders, HttpStatus.CREATED);
     }
 
-    @RequestMapping (value = "{id}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Location> updateLocation (@PathVariable ("id") Long locationID, @RequestBody @Valid Location modifiedLocation) {
-
+    @RequestMapping (method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Location> updateLocation (@RequestBody @Valid Location modifiedLocation) {
         HttpHeaders httpHeaders = new HttpHeaders();
-
-        locationService.update(locationID, modifiedLocation);
-
-        return new ResponseEntity<>(modifiedLocation, httpHeaders, HttpStatus.OK);
+        return new ResponseEntity<>(locationService.update(modifiedLocation), httpHeaders, HttpStatus.OK);
     }
 
     @RequestMapping (value = "{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Location> deleteLocation (@PathVariable ("id") Long locationID) {
-
         locationService.delete(locationID);
-
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
