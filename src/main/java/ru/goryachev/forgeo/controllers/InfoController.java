@@ -1,7 +1,6 @@
 package ru.goryachev.forgeo.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -9,13 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class InfoController {
 
     @GetMapping("/about")
-    public String mainPage () {
-        return "APP info: ForGeo (by Lev Goryachev) webapp is based on SpringBoot, Hibernate, PostgreSQL; frontend module - ReactJS";
+    public String about () {
+        return "ForGeo web app based on Spring Boot, Spring Data JPA (Hibernate); frontend module - ReactJS";
     }
-
-    @GetMapping("/developers")
-    public String constructions () {
-        return "API documentation";
-    }
-
 }
