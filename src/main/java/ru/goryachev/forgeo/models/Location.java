@@ -7,6 +7,13 @@ import javax.persistence.Table;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Location is an entity for static geolocations of company facilities
+ * (construction sites, buildings, branches, warehouses).
+ * @author Lev Goryachev
+ * @version 3
+ */
+
 @Entity
 @Table(name = "site_location")
 public class Location extends BaseEntity {

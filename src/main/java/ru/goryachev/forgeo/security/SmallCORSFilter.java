@@ -6,6 +6,12 @@ import javax.servlet.*;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * SmallCORSFilter handles Option requests (e.g. CORS in browsers).
+ * @author Lev Goryachev
+ * @version 3
+ */
+
 @Component
 public class SmallCORSFilter implements Filter {
 

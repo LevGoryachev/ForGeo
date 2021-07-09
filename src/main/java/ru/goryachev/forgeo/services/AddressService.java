@@ -7,6 +7,12 @@ import ru.goryachev.forgeo.repositories.AddressRepo;
 
 import java.util.List;
 
+/**
+ * AddressService provides CRUD operations for Address.
+ * @author Lev Goryachev
+ * @version 3
+ */
+
 @Service
 public class AddressService {
 

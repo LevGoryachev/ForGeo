@@ -11,6 +11,16 @@ import ru.goryachev.forgeo.services.LocationService;
 import javax.validation.Valid;
 import java.util.List;
 
+/**
+ * LocationController:
+ * GET /api/v3/locations
+ * GET /api/v3/locations/id
+ * POST /api/v3/locations
+ * PUT /api/v3/locations
+ * DELETE /api/v3/locations/id
+ * @author Lev Goryachev
+ * @version 3
+ */
 
 @RestController
 @RequestMapping("/api/v3/locations")

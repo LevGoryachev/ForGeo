@@ -12,6 +12,18 @@ import ru.goryachev.forgeo.services.AddressService;
 import javax.validation.Valid;
 import java.util.List;
 
+/**
+ * AddressController:
+ * GET /api/v3/addresses
+ * GET /api/v3/addresses?type=typeName
+ * GET /api/v3/addresses/id
+ * POST/api/v3/addresses
+ * PUT /api/v3/addresses
+ * DELETE /api/v3/addresses/id
+ * @author Lev Goryachev
+ * @version 3
+ */
+
 @RestController
 @RequestMapping("/api/v3/addresses")
 public class AddressController {

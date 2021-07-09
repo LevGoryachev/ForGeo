@@ -7,6 +7,12 @@ import ru.goryachev.forgeo.repositories.LocationRepo;
 
 import java.util.List;
 
+/**
+ * LocationService provides CRUD operations for Location.
+ * @author Lev Goryachev
+ * @version 3
+ */
+
 @Service
 public class LocationService {
 
@@ -21,10 +27,6 @@ public class LocationService {
     public Location getById(Long id) {
 
         return locationRepo.findById(id).get();
-    }
-
-    public Location getByName(String name) {
-        return null;
     }
 
     public Location create(Location location) {

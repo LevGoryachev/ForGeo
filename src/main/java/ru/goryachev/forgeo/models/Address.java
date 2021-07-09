@@ -5,6 +5,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.util.Objects;
 
+/**
+ * Address is an entity for addresses of company facilities
+ * (construction sites, buildings, branches, warehouses).
+ * @author Lev Goryachev
+ * @version 3
+ */
+
 @Entity
 @Table(name = "address")
 public class Address extends BaseEntity {
