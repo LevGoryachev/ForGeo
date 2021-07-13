@@ -2,6 +2,8 @@ package ru.goryachev.forgeo.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.goryachev.forgeo.exceptions.EmptyListException;
+import ru.goryachev.forgeo.models.Address;
 import ru.goryachev.forgeo.models.Location;
 import ru.goryachev.forgeo.repositories.LocationRepo;
 
@@ -19,9 +21,13 @@ public class LocationService {
     @Autowired
     private LocationRepo locationRepo;
 
-    public List<Location> getAll() {
+    public List<Location> getAll() throws EmptyListException {
 
-        return locationRepo.findAll();
+        List<Location> allLocations =  locationRepo.findAll();
+        if (allLocations.isEmpty()) {
+            throw new EmptyListException();
+        }
+        return allLocations;
     }
 
     public Location getById(Long id) {

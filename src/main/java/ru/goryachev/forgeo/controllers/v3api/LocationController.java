@@ -1,11 +1,13 @@
 package ru.goryachev.forgeo.controllers.v3api;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ru.goryachev.forgeo.exceptions.EmptyListException;
 import ru.goryachev.forgeo.models.Location;
 import ru.goryachev.forgeo.services.LocationService;
 import javax.validation.Valid;
@@ -30,7 +32,7 @@ public class LocationController {
     private LocationService locationService;
 
     @RequestMapping (method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Location>> getAllLocations () {
+    public ResponseEntity<List<Location>> getAllLocations () throws EmptyListException {
         List <Location> locations = locationService.getAll();
         return new ResponseEntity<>(locations, HttpStatus.OK);
     }
@@ -58,4 +60,15 @@ public class LocationController {
         locationService.delete(locationID);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @ExceptionHandler(EmptyListException.class)
+    public ResponseEntity<Object> handleEmptyListException(EmptyListException e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<Object> handleException(DataIntegrityViolationException e) {
+        return new ResponseEntity<>(e.getMostSpecificCause().getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
 }
