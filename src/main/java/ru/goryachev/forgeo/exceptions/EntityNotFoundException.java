@@ -7,6 +7,6 @@ package ru.goryachev.forgeo.exceptions;
 public class EntityNotFoundException extends Exception {
 
     public EntityNotFoundException(Long id) {
-        super(String.format("Object with ID %d not found in database", id));
+        super(String.format("Object with ID %d not found in ForGeo database", id));
     }
 }

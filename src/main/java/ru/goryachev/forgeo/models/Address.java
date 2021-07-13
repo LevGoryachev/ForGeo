@@ -38,8 +38,8 @@ public class Address extends BaseEntity {
     private String zipPostal;
 
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "site_location_id")
+    @ManyToOne(optional = true, fetch = FetchType.LAZY)
+    @JoinColumn(/*columnDefinition="bigint",*/name = "site_location_id")
     private Location location;
 
     public String getType() {

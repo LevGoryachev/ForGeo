@@ -1,11 +1,13 @@
 package ru.goryachev.forgeo.controllers.v3api;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ru.goryachev.forgeo.exceptions.EmptyListException;
 import ru.goryachev.forgeo.models.Address;
 import ru.goryachev.forgeo.services.AddressService;
 
@@ -32,7 +34,7 @@ public class AddressController {
     private AddressService addressService;
 
     @RequestMapping (method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Address>> getAllAddresses (@RequestParam(value = "type", required = false) String type) {
+    public ResponseEntity<List<Address>> getAllAddresses (@RequestParam(value = "type", required = false) String type) throws EmptyListException {
         List <Address> addresses = addressService.getAll(type);
         return new ResponseEntity<>(addresses, HttpStatus.OK);
     }
@@ -60,4 +62,15 @@ public class AddressController {
         addressService.delete(addressID);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @ExceptionHandler(EmptyListException.class)
+    public ResponseEntity<Object> handleEmptyListException(EmptyListException e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<Object> handleException(DataIntegrityViolationException e) {
+        return new ResponseEntity<>(e.getMostSpecificCause().getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
 }

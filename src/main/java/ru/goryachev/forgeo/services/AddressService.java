@@ -2,8 +2,10 @@ package ru.goryachev.forgeo.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.goryachev.forgeo.exceptions.EmptyListException;
 import ru.goryachev.forgeo.models.Address;
 import ru.goryachev.forgeo.repositories.AddressRepo;
+import ru.goryachev.forgeo.repositories.LocationRepo;
 
 import java.util.List;
 
@@ -19,11 +21,21 @@ public class AddressService {
     @Autowired
     private AddressRepo addressRepo;
 
-    public List<Address> getAll(String type) {
+    private LocationRepo locationRepo;
+
+    public List<Address> getAll(String type) throws EmptyListException {
         if (type == null) {
-            return addressRepo.findAll();
+            List<Address> allAddresses = addressRepo.findAll();
+            if (allAddresses.isEmpty()) {
+                throw new EmptyListException();
+            }
+            return allAddresses;
         }
-        return addressRepo.findAllByType(type);
+        List<Address> allAddresses = addressRepo.findAllByType(type);
+        if (allAddresses.isEmpty()) {
+            throw new EmptyListException();
+        }
+        return allAddresses;
     }
 
     public Address getById(Long id) {
@@ -31,6 +43,7 @@ public class AddressService {
     }
 
     public Address create(Address address) {
+
         return addressRepo.save(address);
     }
 
