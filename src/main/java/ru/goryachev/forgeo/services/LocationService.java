@@ -3,6 +3,7 @@ package ru.goryachev.forgeo.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.goryachev.forgeo.exceptions.EmptyListException;
+import ru.goryachev.forgeo.exceptions.EntityNotFoundException;
 import ru.goryachev.forgeo.models.Address;
 import ru.goryachev.forgeo.models.Location;
 import ru.goryachev.forgeo.repositories.LocationRepo;
@@ -30,9 +31,9 @@ public class LocationService {
         return allLocations;
     }
 
-    public Location getById(Long id) {
-
-        return locationRepo.findById(id).get();
+    public Location getById(Long id) throws EntityNotFoundException {
+        Location location = locationRepo.findById(id).orElseThrow(() -> new EntityNotFoundException(id));
+        return location;
     }
 
     public Location create(Location location) {

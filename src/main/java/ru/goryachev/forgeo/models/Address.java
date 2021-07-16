@@ -1,9 +1,10 @@
 package ru.goryachev.forgeo.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.Objects;
+
 
 /**
  * Address is an entity for addresses of company facilities
@@ -37,10 +38,13 @@ public class Address extends BaseEntity {
     @Column(name = "zip_postal")
     private String zipPostal;
 
-    @JsonIgnore
     @ManyToOne(optional = true, fetch = FetchType.LAZY)
-    @JoinColumn(/*columnDefinition="bigint",*/name = "site_location_id")
+    @JoinColumn(/*columnDefinition="bigint",*/ name = "site_location_id", insertable = false, updatable = false)
+    @JsonIgnoreProperties(value = { "addresses" ,"hibernateLazyInitializer", "handler" }, allowSetters = true)
     private Location location;
+
+    @Column(name = "site_location_id")
+    private Long locationId;
 
     public String getType() {
         return type;
@@ -106,6 +110,14 @@ public class Address extends BaseEntity {
         this.location = location;
     }
 
+    public Long getLocationId() {
+        return locationId;
+    }
+
+    public void setLocationId(Long locationId) {
+        this.locationId = locationId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -118,12 +130,12 @@ public class Address extends BaseEntity {
                 Objects.equals(getTownCity(), address.getTownCity()) &&
                 Objects.equals(getCountry(), address.getCountry()) &&
                 Objects.equals(getZipPostal(), address.getZipPostal()) &&
-                Objects.equals(getLocation(), address.getLocation());
+                Objects.equals(getLocationId(), address.getLocationId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getType(), getLineOne(), getLineTwo(), getLineThree(), getTownCity(), getCountry(), getZipPostal(), getLocation());
+        return Objects.hash(getType(), getLineOne(), getLineTwo(), getLineThree(), getTownCity(), getCountry(), getZipPostal(), getLocationId());
     }
 
     @Override

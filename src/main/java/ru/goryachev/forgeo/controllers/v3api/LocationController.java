@@ -8,6 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.goryachev.forgeo.exceptions.EmptyListException;
+import ru.goryachev.forgeo.exceptions.EntityNotFoundException;
 import ru.goryachev.forgeo.models.Location;
 import ru.goryachev.forgeo.services.LocationService;
 import javax.validation.Valid;
@@ -38,7 +39,7 @@ public class LocationController {
     }
 
     @RequestMapping (value = "{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Location> getLocation (@PathVariable("id") Long locationID) {
+    public ResponseEntity<Location> getLocation (@PathVariable("id") Long locationID) throws EntityNotFoundException {
         Location location = locationService.getById(locationID);
         return new ResponseEntity<>(location, HttpStatus.OK);
     }
@@ -66,9 +67,13 @@ public class LocationController {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(DataIntegrityViolationException.class)
-    public ResponseEntity<Object> handleException(DataIntegrityViolationException e) {
-        return new ResponseEntity<>(e.getMostSpecificCause().getMessage(), HttpStatus.BAD_REQUEST);
+    @ExceptionHandler(EntityNotFoundException.class)
+    public ResponseEntity<Object> handleEntityNotFoundException(EntityNotFoundException e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<Object> handleDataIntegrityViolationException(DataIntegrityViolationException e) {
+        return new ResponseEntity<>(e.getMostSpecificCause().getMessage(), HttpStatus.BAD_REQUEST);
+    }
 }

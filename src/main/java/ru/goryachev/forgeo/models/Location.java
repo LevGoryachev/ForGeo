@@ -1,9 +1,8 @@
 package ru.goryachev.forgeo.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
@@ -24,12 +23,9 @@ public class Location extends BaseEntity {
     @Column(name = "longitude")
     private Double lng;
 
-    @OneToMany(mappedBy = "location")
+    @OneToMany(mappedBy = "location", cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
+    @JsonIgnoreProperties(value = { "location" ,"hibernateLazyInitializer", "handler" }, allowSetters = true)
     private List<Address> addresses;
-
-
-    public Location() {
-    }
 
     public Double getLat() {
         return lat;

@@ -8,6 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.goryachev.forgeo.exceptions.EmptyListException;
+import ru.goryachev.forgeo.exceptions.EntityNotFoundException;
 import ru.goryachev.forgeo.models.Address;
 import ru.goryachev.forgeo.services.AddressService;
 
@@ -40,7 +41,7 @@ public class AddressController {
     }
 
     @RequestMapping (value = "{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Address> getAddress (@PathVariable("id") Long addressID) {
+    public ResponseEntity<Address> getAddress (@PathVariable("id") Long addressID) throws EntityNotFoundException {
         Address address = addressService.getById(addressID);
         return new ResponseEntity<>(address, HttpStatus.OK);
     }
@@ -68,9 +69,13 @@ public class AddressController {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(DataIntegrityViolationException.class)
-    public ResponseEntity<Object> handleException(DataIntegrityViolationException e) {
-        return new ResponseEntity<>(e.getMostSpecificCause().getMessage(), HttpStatus.BAD_REQUEST);
+    @ExceptionHandler(EntityNotFoundException.class)
+    public ResponseEntity<Object> handleEntityNotFoundException(EntityNotFoundException e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<Object> handleDataIntegrityViolationException(DataIntegrityViolationException e) {
+        return new ResponseEntity<>(e.getMostSpecificCause().getMessage(), HttpStatus.BAD_REQUEST);
+    }
 }

@@ -3,6 +3,7 @@ package ru.goryachev.forgeo.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.goryachev.forgeo.exceptions.EmptyListException;
+import ru.goryachev.forgeo.exceptions.EntityNotFoundException;
 import ru.goryachev.forgeo.models.Address;
 import ru.goryachev.forgeo.repositories.AddressRepo;
 import ru.goryachev.forgeo.repositories.LocationRepo;
@@ -38,8 +39,9 @@ public class AddressService {
         return allAddresses;
     }
 
-    public Address getById(Long id) {
-        return addressRepo.findById(id).get();
+    public Address getById(Long id) throws EntityNotFoundException {
+        Address address = addressRepo.findById(id).orElseThrow(() -> new EntityNotFoundException(id));
+        return address;
     }
 
     public Address create(Address address) {
