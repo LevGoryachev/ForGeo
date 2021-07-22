@@ -15,12 +15,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 /**
- * LocationController:
- * GET /api/v3/locations
- * GET /api/v3/locations/id
- * POST /api/v3/locations
- * PUT /api/v3/locations
- * DELETE /api/v3/locations/id
+ * ForGeo API: see app/swagger-ui/
  * @author Lev Goryachev
  * @version 3
  */

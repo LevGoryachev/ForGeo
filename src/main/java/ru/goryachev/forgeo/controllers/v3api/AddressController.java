@@ -16,13 +16,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 /**
- * AddressController:
- * GET /api/v3/addresses
- * GET /api/v3/addresses?type=typeName
- * GET /api/v3/addresses/id
- * POST/api/v3/addresses
- * PUT /api/v3/addresses
- * DELETE /api/v3/addresses/id
+ * ForGeo API: see app/swagger-ui/
  * @author Lev Goryachev
  * @version 3
  */
