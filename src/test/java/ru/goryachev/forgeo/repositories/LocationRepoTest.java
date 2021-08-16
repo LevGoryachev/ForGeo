@@ -38,8 +38,9 @@ public class LocationRepoTest {
         Location location = new Location();
         location.setLat(12345.12345);
         location.setLng(6789.6789);
-        this.testId = locationRepo.save(location).getId();
-        Assertions.assertThat(location.getId()).isGreaterThan(0);
+        Location savedLocation = locationRepo.save(location);
+        this.testId = savedLocation.getId();
+        Assertions.assertThat(savedLocation.getId()).isGreaterThan(0);
     }
 
     @Test

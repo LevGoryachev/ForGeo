@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.goryachev.forgeo.exceptions.EmptyListException;
 import ru.goryachev.forgeo.exceptions.EntityNotFoundException;
-import ru.goryachev.forgeo.models.Address;
 import ru.goryachev.forgeo.models.Location;
 import ru.goryachev.forgeo.repositories.LocationRepo;
 
@@ -37,7 +36,10 @@ public class LocationService {
     }
 
     public Location create(Location location) {
-        return locationRepo.save(location);
+
+        Location location1 = locationRepo.save(location);
+        Long x = location1.getId();
+        return location1;
     }
 
     public Location update(Location modifiedLocation) {
