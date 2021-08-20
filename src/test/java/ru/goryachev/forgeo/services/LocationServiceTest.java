@@ -90,7 +90,7 @@ public class LocationServiceTest {
     @Rollback(value = false)
     public void updateLocationTest(){
         Location location = new Location();
-        location.setId(1L);
+        location.setId(3L);
         location.setLat(12345.12345);
         location.setLng(6789.6789);
         when(locationRepo.save(location)).thenReturn(location);
