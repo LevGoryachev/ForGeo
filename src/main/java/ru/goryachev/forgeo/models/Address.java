@@ -141,13 +141,15 @@ public class Address extends BaseEntity {
     @Override
     public String toString() {
         return "Address{" +
-                "lat='" + type + '\'' +
+                "type='" + type + '\'' +
                 ", lineOne='" + lineOne + '\'' +
                 ", lineTwo='" + lineTwo + '\'' +
                 ", lineThree='" + lineThree + '\'' +
                 ", townCity='" + townCity + '\'' +
                 ", country='" + country + '\'' +
                 ", zipPostal='" + zipPostal + '\'' +
+                ", location=" + location +
+                ", locationId=" + locationId +
                 '}';
     }
 }
