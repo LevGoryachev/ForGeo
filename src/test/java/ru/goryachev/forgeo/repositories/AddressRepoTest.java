@@ -29,7 +29,7 @@ import static org.junit.jupiter.api.Assertions.*;
 //@DataJpaTest()
 public class AddressRepoTest {
 
-    Long testId;
+    private Long testId;
 
     @Autowired
     private AddressRepo addressRepo;

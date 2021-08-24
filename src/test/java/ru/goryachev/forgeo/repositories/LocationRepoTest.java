@@ -26,7 +26,7 @@ import java.util.Optional;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class LocationRepoTest {
 
-    Long testId;
+    private Long testId;
 
     @Autowired
     private LocationRepo locationRepo;

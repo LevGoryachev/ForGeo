@@ -34,7 +34,7 @@ import static org.mockito.Mockito.when;
 public class AddressServiceTest {
 
     @InjectMocks
-    AddressService addressService;
+    private AddressService addressService;
 
     @Mock
     private AddressRepo addressRepo;

@@ -34,7 +34,7 @@ import static org.mockito.Mockito.when;
 public class LocationServiceTest {
 
     @InjectMocks
-    LocationService locationService;
+    private LocationService locationService;
 
     @Mock
     private LocationRepo locationRepo;
