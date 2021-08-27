@@ -1,7 +1,11 @@
 package ru.goryachev.forgeo.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +25,10 @@ import ru.goryachev.forgeo.security.SmallCORSFilter;
 import ru.goryachev.forgeo.services.AddressService;
 
 import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.List;
 
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 /**
@@ -57,8 +64,8 @@ public class AddressControllerTest {
                 //.addFilters(smallCORSFilter)
                 //.addFilters(new CorsFilter())
                 .build();*/
-
     }
+
     public static String asJsonString(final Object obj) {
         try {
             return new ObjectMapper().writeValueAsString(obj);
@@ -66,6 +73,7 @@ public class AddressControllerTest {
             throw new RuntimeException(e);
         }
     }
+
     @Test
     @Order(1)
     @Rollback(value = false)
@@ -80,20 +88,19 @@ public class AddressControllerTest {
         address.setCountry("USA");
         address.setZipPostal("115588");
 
-        String p = asJsonString(address);
+        String jsonAddress = asJsonString(address);
 
         when(addressService.create(address)).thenReturn(address);
 
         ResultActions mvcResult = mockMvc.perform(
                 MockMvcRequestBuilders.post("/api/v3/addresses")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(p))
+                        .content(jsonAddress))
                 //.andExpect(MockMvcResultMatchers.model().attributeExists("lineOne"))
-                .andExpect(MockMvcResultMatchers.content().json(p));
+                .andExpect(MockMvcResultMatchers.content().json(jsonAddress));
                 //.andExpect(status().isCreated());
 
         String s = mvcResult.andReturn().getResponse().getContentAsString();
-        System.out.println(s);
     }
 
     @Test
@@ -120,10 +127,9 @@ public class AddressControllerTest {
                 .andExpect(MockMvcResultMatchers.content().json(jsonAddress));
     }
 
-/*
     @Test
     @Order(3)
-    public void getAllAddresssTest() throws EmptyListException {
+    public void getAllAddresssTest() throws Exception {
         List<Address> addresses = new ArrayList<>();
         for (Integer i = 1; i < 5; i++){
             Address address = new Address();
@@ -137,15 +143,22 @@ public class AddressControllerTest {
             address.setZipPostal("115588");
             addresses.add(address);
         }
-        when(addressRepo.findAll()).thenReturn(addresses);
-        List<Address> addressesRead = addressService.getAll(null);
-        Assertions.assertThat(addressesRead.size()).isGreaterThan(0);
+
+        String jsonAddresses = asJsonString(addresses);
+
+        when(addressService.getAll(null)).thenReturn(addresses);
+
+        ResultActions mvcResult = mockMvc.perform(
+                MockMvcRequestBuilders.get("/api/v3/addresses")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(jsonAddresses))
+                .andExpect(MockMvcResultMatchers.content().json(jsonAddresses));
     }
 
     @Test
     @Order(4)
     @Rollback(value = false)
-    public void updateAddressTest(){
+    public void updateAddressTest() throws Exception{
         Address address = new Address();
         address.setId(1L);
         address.setType("testValueType");
@@ -155,17 +168,26 @@ public class AddressControllerTest {
         address.setTownCity("Los Angeles");
         address.setCountry("USA");
         address.setZipPostal("115588");
-        when(addressRepo.save(address)).thenReturn(address);
-        Address savedAddress = addressService.update(address);
-        Assertions.assertThat(savedAddress.getLineOne()).isEqualTo("testValueAbc");
+
+        String jsonAddress = asJsonString(address);
+
+        when(addressService.update(address)).thenReturn(address);
+
+        ResultActions mvcResult = mockMvc.perform(
+                MockMvcRequestBuilders.put("/api/v3/addresses")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(jsonAddress))
+                .andExpect(MockMvcResultMatchers.content().json(jsonAddress));
     }
 
     @Test
     @Order(5)
     @Rollback(value = false)
-    public void deleteAddressTest(){
+    public void deleteAddressTest() throws Exception {
         Long testId = 2L;
-        addressService.delete(testId);
-        verify(addressRepo).deleteById(testId);
-    }*/
+
+        ResultActions mvcResult = mockMvc.perform(
+                MockMvcRequestBuilders.delete("/api/v3/addresses/2"));
+        verify(addressService).delete(testId);
+    }
 }
