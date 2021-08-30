@@ -1,11 +1,7 @@
 package ru.goryachev.forgeo.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.TestMethodOrder;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +28,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 /**
- * CRUD service-layer testing using mocks.
+ * CRUD API-layer testing using mocks.
  * Each method in different object (Lifecycle.PER_METHOD)
  * @author Lev Goryachev
  * @version 1.0
@@ -42,7 +38,7 @@ import static org.mockito.Mockito.when;
 @SpringBootTest(classes = AppInit.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 //@ExtendWith(MockitoExtension.class)
-//@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@TestInstance(TestInstance.Lifecycle.PER_METHOD)
 public class AddressControllerTest {
 
     @Autowired
@@ -129,7 +125,7 @@ public class AddressControllerTest {
 
     @Test
     @Order(3)
-    public void getAllAddresssTest() throws Exception {
+    public void getAllAddressesTest() throws Exception {
         List<Address> addresses = new ArrayList<>();
         for (Integer i = 1; i < 5; i++){
             Address address = new Address();
